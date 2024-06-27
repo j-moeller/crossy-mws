@@ -1,0 +1,10 @@
+all: build/main
+	./build/main
+
+build/main.o: main.c
+	@mkdir -p $(dir $@)
+	$(CC) -Ijson.h -c $< -o $@
+
+build/main: build/main.o
+	@mkdir -p $(dir $@)
+	$(CC) -o $@ $^ -lm

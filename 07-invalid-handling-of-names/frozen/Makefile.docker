@@ -1,0 +1,14 @@
+all: build/main
+	./build/main
+
+build/frozen.o: frozen/frozen.c
+	@mkdir -p $(dir $@)
+	$(CC) -o $@ -c $<
+
+build/main.o: main.c
+	@mkdir -p $(dir $@)
+	$(CC) -o $@ -c $<
+
+build/main: build/main.o build/frozen.o
+	@mkdir -p $(dir $@)
+	$(CC) -o $@ $^

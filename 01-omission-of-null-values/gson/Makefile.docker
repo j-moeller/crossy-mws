@@ -1,0 +1,3 @@
+all:
+	cd crossy && mvn install
+	cd crossy && mvn exec:java

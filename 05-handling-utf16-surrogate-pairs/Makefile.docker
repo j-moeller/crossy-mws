@@ -1,0 +1,18 @@
+all: build/main
+	./build/main
+
+build/json-builder.o: json-builder/json-builder.c
+	@mkdir -p $(dir $@)
+	$(CC) -Ijson-builder -Ijson-parser -c $< -o $@
+
+build/json-parser.o: json-parser/json.c
+	@mkdir -p $(dir $@)
+	$(CC) -Ijson-parser -c $< -o $@
+
+build/main.o: main.c
+	@mkdir -p $(dir $@)
+	$(CC) -Ijson-parser -c $< -o $@
+
+build/main: build/main.o build/json-parser.o build/json-builder.o
+	@mkdir -p $(dir $@)
+	$(CC) -o $@ $^ -lm

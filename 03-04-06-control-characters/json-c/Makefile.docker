@@ -1,0 +1,15 @@
+all: build/main
+	./build/main
+
+build/json-c/libjson-c.a:
+	mkdir -p $(dir $@)
+	cd build/json-c && cmake -DBUILD_TESTING=OFF -DCMAKE_C_COMPILER=clang-14 ../../json-c
+	cd build/json-c && make
+
+build/main.o: main.c build/json-c/libjson-c.a
+	@mkdir -p $(dir $@)
+	$(CC) -Ibuild/json-c -c $< -o $@
+
+build/main: build/main.o build/json-c/libjson-c.a
+	@mkdir -p $(dir $@)
+	$(CC) -o $@ $^

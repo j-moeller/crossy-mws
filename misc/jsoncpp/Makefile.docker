@@ -1,0 +1,17 @@
+all: build/main
+	./build/main
+
+CXX := clang++-14
+
+build/jsoncpp/lib/libjsoncpp.a:
+	@mkdir -p $(dir $@)
+	cd build/jsoncpp && cmake -DCMAKE_BUILD_TYPE=debug -DBUILD_STATIC_LIBS=ON -DJSONCPP_WITH_TESTS=OFF -DCMAKE_CXX_COMPILER=clang++-14 ../../jsoncpp
+	cd build/jsoncpp && make
+
+build/main.o: main.cpp build/jsoncpp/lib/libjsoncpp.a
+	@mkdir -p $(dir $@)
+	$(CXX) -o $@ -c $<
+
+build/main: build/main.o build/jsoncpp/lib/libjsoncpp.a
+	@mkdir -p $(dir $@)
+	$(CXX) -o $@ $< -l jsoncpp -Lbuild/jsoncpp/lib

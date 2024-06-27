@@ -1,0 +1,17 @@
+PWD := $(shell pwd)
+
+all: build/main
+	./build/main
+
+build/jansson/lib/libjansson.a:
+	@mkdir -p $(dir $@)
+	cd build/jansson && cmake -DJANSSON_BUILD_DOCS=OFF -DCMAKE_BUILD_TYPE=Debug -DCMAKE_C_COMPILER=clang-14 -DCMAKE_CXX_COMPILER=clang++-14 ../../jansson
+	cd build/jansson && make
+
+build/main.o: main.c build/jansson/lib/libjansson.a
+	@mkdir -p $(dir $@)
+	$(CC) -c $< -o $@
+
+build/main: build/main.o build/jansson/lib/libjansson.a
+	@mkdir -p $(dir $@)
+	$(CC) -o $@ $^

@@ -1,0 +1,17 @@
+all: build/main
+	./build/main
+
+build/ccan.o: ccan/ccan/json/json.c
+	@mkdir -p $(dir $@)
+	$(CC) -c $< -o $@
+
+build/main.o: main.c
+	@mkdir -p $(dir $@)
+	$(CC) -c $< -o $@
+
+build/main: build/main.o build/ccan.o
+	@mkdir -p $(dir $@)
+	$(CC) -o $@ $^
+
+clean:
+	rm -rf build

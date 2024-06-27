@@ -1,0 +1,14 @@
+all: build/main
+	./build/main
+
+build/cjson.o: cJSON/cJSON.c
+	@mkdir -p $(dir $@)
+	$(CC) -c $< -o $@
+
+build/main.o: main.c
+	@mkdir -p $(dir $@)
+	$(CC) -c $< -o $@
+
+build/main: build/main.o build/cjson.o
+	@mkdir -p $(dir $@)
+	$(CC) -o $@ $^

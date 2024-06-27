@@ -1,0 +1,51 @@
+[submodule "03-04-06-control-characters/ccan/ccan"]
+	path = 03-04-06-control-characters/ccan/ccan
+	url = https://github.com/rustyrussell/ccan
+[submodule "03-04-06-control-characters/cJSON/cJSON"]
+	path = 03-04-06-control-characters/cJSON/cJSON
+	url = https://github.com/DaveGamble/cJSON
+[submodule "03-04-06-control-characters/jansson/jansson"]
+	path = 03-04-06-control-characters/jansson/jansson
+	url = https://github.com/akheron/jansson
+[submodule "03-04-06-control-characters/jsmn/jsmn"]
+	path = 03-04-06-control-characters/jsmn/jsmn
+	url = https://github.com/zserge/jsmn
+[submodule "03-04-06-control-characters/json-c/json-c"]
+	path = 03-04-06-control-characters/json-c/json-c
+	url = https://github.com/json-c/json-c
+[submodule "03-04-06-control-characters/json.h/json.h"]
+	path = 03-04-06-control-characters/json.h/json.h
+	url = https://github.com/sheredom/json.h
+[submodule "03-04-06-control-characters/json-parser/json-parser"]
+	path = 03-04-06-control-characters/json-parser/json-parser
+	url = https://github.com/json-parser/json-parser
+[submodule "03-04-06-control-characters/json-parser/json-builder"]
+	path = 03-04-06-control-characters/json-parser/json-builder
+	url = https://github.com/json-parser/json-builder
+[submodule "05-handling-utf16-surrogate-pairs/json-parser"]
+	path = 05-handling-utf16-surrogate-pairs/json-parser
+	url = https://github.com/json-parser/json-parser
+[submodule "05-handling-utf16-surrogate-pairs/json-builder"]
+	path = 05-handling-utf16-surrogate-pairs/json-builder
+	url = https://github.com/json-parser/json-builder
+[submodule "07-invalid-handling-of-names/frozen/frozen"]
+	path = 07-invalid-handling-of-names/frozen/frozen
+	url = https://github.com/cesanta/frozen
+[submodule "03-04-06-control-characters/jsoncpp/jsoncpp"]
+	path = 03-04-06-control-characters/jsoncpp/jsoncpp
+	url = https://github.com/open-source-parsers/jsoncpp
+[submodule "misc/frozen/frozen"]
+	path = misc/frozen/frozen
+	url = https://github.com/cesanta/frozen
+[submodule "misc/cJSON/cJSON"]
+	path = misc/cJSON/cJSON
+	url = https://github.com/DaveGamble/cJSON
+[submodule "misc/jsoncpp/jsoncpp"]
+	path = misc/jsoncpp/jsoncpp
+	url = https://github.com/open-source-parsers/jsoncpp
+[submodule "misc/json-parser/json-builder"]
+	path = misc/json-parser/json-builder
+	url = https://github.com/json-parser/json-builder
+[submodule "misc/json-parser/json-parser"]
+	path = misc/json-parser/json-parser
+	url = https://github.com/json-parser/json-parser
