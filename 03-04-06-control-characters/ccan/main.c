@@ -76,5 +76,20 @@ int main() {
         }
     }
 
+    // 0x1f
+    {
+        char template[] = "[\"0\"]";
+        int size = strlen(template);
+        template[2] = 0x1f;
+
+        char* out_buf = NULL;
+        size_t out_size;
+
+        int ret = run(template, size, (char**)&(out_buf), &out_size);
+        if (ret != 0) {
+            printf("Failed to parse 0x1f\n");
+        }
+    }
+
     return 0;
 }
