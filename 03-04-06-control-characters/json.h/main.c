@@ -41,17 +41,10 @@ int main() {
         size_t out_size;
 
         int ret = run(template, size, (char**)&(out_buf), &out_size);
-
-        if (ret != 0) {
-            exit(1);
+        if (ret == 0) {
+            printf("Control character 0x%x gets parsed\n", i);
+            free(out_buf);
         }
-
-        if (out_size == 0 || out_buf == NULL) {
-            exit(1);
-        }
-
-        printf("%s\n", out_buf);
-        free(out_buf);
     }
 
     // \u0000
@@ -72,7 +65,7 @@ int main() {
             exit(1);
         }
 
-        printf("%s\n", out_buf);
+        printf("Trailing text after \\u0000 gets discarded: %s\n", out_buf);
         free(out_buf);
     }
 
@@ -96,7 +89,43 @@ int main() {
             exit(1);
         }
 
-        printf("%s\n", out_buf);
+        printf("\\u000%d gets serialized to 0x0%d: %s\n", i, i, out_buf);
+        free(out_buf);
+    }
+
+    for (int i = 0xe; i <= 0x1f; i++) {
+        char template[] = "[\"\\u0000Invalid\"]";
+        int size = strlen(template);
+
+        if (i == 0xe) {
+          template[7] = 'e';
+        }
+        else if (i == 0xf) {
+          template[7] = 'f';
+        }
+        else if (i < 0x1a) {
+          template[6] = '1';
+          template[7] = i - 0x10 + '0';
+        }
+        else {
+          template[6] = '1';
+          template[7] = i - 0x1a + 'a';
+        }
+
+        char* out_buf = NULL;
+        size_t out_size;
+
+        int ret = run(template, size, (char**)&(out_buf), &out_size);
+
+        if (ret != 0) {
+            exit(1);
+        }
+
+        if (out_size == 0 || out_buf == NULL) {
+            exit(1);
+        }
+
+        printf("\\u000%x gets serialized to 0x0%x: %s\n", i, i, out_buf);
         free(out_buf);
     }
 }
